@@ -24,7 +24,7 @@ client.on(Events.MessageCreate, async (msg) => {
   if (msg.author.id === client.user?.id || !msg.mentions.has(client.user!)) {
     return;
   }
-  console.log(`from ${msg.author} received ${msg.content}`);
+  console.log(`from ${msg.author.displayName} received ${msg.content}`);
   await msg.channel.sendTyping();
   messages.push({
     role: "developer",
@@ -41,6 +41,12 @@ client.on(Events.MessageCreate, async (msg) => {
       messages: messages,
     })
   ).choices[0].message;
-  if (response.content) await msg.channel.send(response.content);
+  if (response.content)
+    await msg.channel.send({
+      reply: {
+        messageReference: msg.id,
+      },
+      content: response.content,
+    });
 });
 client.login(process.env.DISCORD_BOT_TOKEN);
