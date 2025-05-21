@@ -1,0 +1,17 @@
+{
+  "name": "lily",
+  "version": "1.0.0",
+  "description": "my personal discord bot",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "NoraxaXV",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^14.19.3",
+    "dotenv": "^16.5.0",
+    "openai": "^4.102.0",
+    "typescript": "^5.8.3"
+  }
+}
