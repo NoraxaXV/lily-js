@@ -1,11 +1,10 @@
 import dotenv from "dotenv";
 dotenv.config();
-
-import ServiceFactory from "./services/factory";
+import ServiceFactory from "./factory.js";
 import { Client, GatewayIntentBits } from "discord.js";
 import OpenAI from "openai";
 
-const application = new ServiceFactory({
+const services = new ServiceFactory({
   ai: new OpenAI({
     apiKey: process.env.SHAPES_API_KEY,
     baseURL: "https://api.shapes.inc/v1",
@@ -19,3 +18,4 @@ const application = new ServiceFactory({
     ],
   }),
 });
+await services.getDiscordService().login(process.env.DISCORD_BOT_TOKEN!);

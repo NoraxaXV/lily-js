@@ -1,14 +1,7 @@
 import { OpenAI } from "openai";
-import ServiceFactory from "./factory";
-
 export default class AIService {
-  private serviceFactory: ServiceFactory;
-  private client: OpenAI;
   private messages: OpenAI.Chat.Completions.ChatCompletionMessageParam[] = [];
-  constructor(serviceFactory: ServiceFactory, client: OpenAI) {
-    this.serviceFactory = serviceFactory;
-    this.client = client;
-  }
+  constructor(private client: OpenAI) {}
 
   public async converse(msg: string, username: string): Promise<string> {
     this.messages.push({
