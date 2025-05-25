@@ -25,4 +25,14 @@ export default class AIService {
       throw Error("No response from AI Chat agent");
     }
   }
+  public addMessage(msg: string, username: string) {
+    this.messages.push({
+      role: "developer",
+      content: `${username} sent the following message:`,
+    });
+    this.messages.push({
+      role: "user",
+      content: msg,
+    });
+  }
 }

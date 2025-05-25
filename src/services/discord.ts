@@ -24,7 +24,7 @@ export default class DiscordService {
     if (
       msg.mentions.has(this.client.user!) ||
       Math.random() > 0.9 ||
-      DiscordService.TRIGGER_WORDS.some(trigger => msg.content.includes(trigger.toLowerCase()))
+      DiscordService.TRIGGER_WORDS.some(trigger => msg.content.toLowerCase().includes(trigger))
     ) {
       await msg.channel.sendTyping();
       await msg.channel.send({
@@ -35,6 +35,8 @@ export default class DiscordService {
           .getAIService()
           .converse(msg.content, msg.author.displayName),
       });
+    } else {
+      this.serviceFactory.getAIService().addMessage(msg.content, msg.author.displayName);
     }
   }
 }
