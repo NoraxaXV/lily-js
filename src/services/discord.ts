@@ -34,8 +34,6 @@ export default class DiscordService {
           .getAIService()
           .converse(msg.content, msg.author.displayName),
       });
-    } else {
-      this.serviceFactory.getAIService().addMessage(msg.content, msg.author.displayName);
     }
   }
 }
