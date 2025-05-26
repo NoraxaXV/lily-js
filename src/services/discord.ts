@@ -2,7 +2,7 @@ import { Client, Events, Message } from "discord.js";
 import ServiceFactory from "../factory.js";
 
 export default class DiscordService {
-  static TRIGGER_WORDS = [ "lily", "chocolate", "water" ];
+  static TRIGGER_WORDS = [ "lily", "chocolate" ];
   constructor(private serviceFactory: ServiceFactory, private client: Client) {
     this.client.once(Events.ClientReady, this.onReady.bind(this));
     this.client.on(Events.MessageCreate, this.onMessage.bind(this));
@@ -23,7 +23,6 @@ export default class DiscordService {
     console.log(`from ${msg.author.displayName}, received: ${msg.content}`);
     if (
       msg.mentions.has(this.client.user!) ||
-      Math.random() > 0.9 ||
       DiscordService.TRIGGER_WORDS.some(trigger => msg.content.toLowerCase().includes(trigger))
     ) {
       await msg.channel.sendTyping();

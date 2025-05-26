@@ -10,9 +10,9 @@
   "author": "NoraxaXV",
   "license": "MIT",
   "dependencies": {
-    "discord.js": "^14.14.1",
+    "discord.js": "^14.19.3",
     "dotenv": "^16.5.0",
-    "openai": "^4.102.0",
+    "openai": "^4.103.0",
     "typescript": "^5.8.3"
   }
 }
